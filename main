@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Progress Bar Widget</title>
+    <style>
+    body, html {
+    height: 100%;
+    margin: 15px;
+    }
+
+    .progress-container {
+    width: 90%;
+    max-width: 600px; /* Optional: Set a max-width for the container */
+    margin: 0 auto; /* Center the container */
+    background-color: #d6cdb3;
+    border-radius: 5px;
+    padding: 10px;
+    }
+
+.progress-bar {
+  height: 30px;
+  background-color: #684e0c;
+  width: 0%;
+  border-radius: 5px;
+  transition: width 0.3s ease;
+}
+    </style>
+    <script type="text/javascript">
+    document.addEventListener("DOMContentLoaded", function() {
+    // Set your start and end dates here (in milliseconds)
+    const startDate = new Date("2024-01-08T00:00:00Z").getTime();
+    const endDate = new Date("2024-05-03T00:00:00Z").getTime();
+
+    const progressBar = document.getElementById("progress-bar");
+
+    function updateProgressBar() {
+    const currentTime = new Date().getTime();
+    const totalTime = endDate - startDate;
+    const elapsedTime = currentTime - startDate;
+    const progressPercentage = (elapsedTime / totalTime) * 100;
+    progressBar.style.width = progressPercentage + "%";
+    }
+    updateProgressBar();
+    setInterval(updateProgressBar, 1000);
+    });
+    </script>
+    </head>
+    <body>
+        <div class="progress-container">
+          <div class="progress-bar" id="progress-bar"></div>
+        </div>
+    </body>
+</html>
